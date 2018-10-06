@@ -31,9 +31,17 @@ int main()
 {
 	Student myClass[10];
 	populate(myClass);
-	Student * ptr[10];
+	Student *namePtr[10];
+	Student *idPtr[10];
+	Student *gradePtr[10];
+	Student *bdayPtr[10];
+	Student *hmeTwnPtr[10];
 	for (int i = 0; i < 10; i++) {
-		ptr[i] = &myClass[i];
+		namePtr[i] = &myClass[i];
+		idPtr[i] = &myClass[i];
+		gradePtr[i] = &myClass[i];
+		bdayPtr[i] = &myClass[i];
+		hmeTwnPtr[i] = &myClass[i];
 	}
 
 	int menuChoice;
@@ -41,12 +49,12 @@ int main()
 		menu();
 		cin >> menuChoice;
 		switch (menuChoice) {
-		case 0: cout << "Original list" << endl << endl; display(ptr); break;
-		case 1: cout << "Sorted by Name" << endl << endl; sortByName(ptr); display(ptr); break;
-		case 2: cout << "Sorted by Student ID" << endl << endl; sortById(ptr); display(ptr); break;
-		case 3: cout << "Sorted by Grade" << endl << endl; sortByGrade(ptr); display(ptr); break;
-		case 4: cout << "Sorted by Birthday" << endl << endl; sortByBday(ptr); display(ptr); break;
-		case 5: cout << "Sorted by Home Town" << endl << endl; sortByHometown(ptr); display(ptr); break;
+		case 0: cout << "Original list" << endl << endl; display(myClass); break;
+		case 1: cout << "Sorted by Name" << endl << endl; sortByName(namePtr); display(namePtr); break;
+		case 2: cout << "Sorted by Student ID" << endl << endl; sortById(idPtr); display(idPtr); break;
+		case 3: cout << "Sorted by Grade" << endl << endl; sortByGrade(gradePtr); display(gradePtr); break;
+		case 4: cout << "Sorted by Birthday" << endl << endl; sortByBday(bdayPtr); display(bdayPtr); break;
+		case 5: cout << "Sorted by Home Town" << endl << endl; sortByHometown(hmeTwnPtr); display(hmeTwnPtr); break;
 		case 6: cout << "Exiting" << endl;  break;
 		}
 	} while (menuChoice != 6);
@@ -166,8 +174,10 @@ void populate(Student arr[]) {
 }
 
 void display(Student arr[]) {
+	cout << left << setw(20) << "Name" << setw(20) << "Student ID" << setw(20) << "Grade" << setw(20) << "Birthday" << setw(20) << "Home Town" << endl;
+	cout << left << setw(20) << "_____" << setw(20) << "__________" << setw(20) << "_____" << setw(20) << "________" << setw(20) << "__________" << endl;
 	for (int i = 0; i < 10; i++) {
-		cout << arr[i].name << " " << arr[i].id << " " << arr[i].grade << " " << arr[i].bday.printDate() << " " << arr[i].hometown << endl;
+		cout << left << setw(20) << arr[i].name << setw(20) << arr[i].id << setw(20) << arr[i].grade << setw(20) << arr[i].bday.printDate() << setw(20) << arr[i].hometown << endl;
 	}
 }
 
