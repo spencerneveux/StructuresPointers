@@ -16,6 +16,7 @@ struct Student
 	string hometown;
 };
 
+void menu();
 void populate(Student arr[]);
 void display(Student arr[]);
 void display(Student *ptr[]);
@@ -28,17 +29,29 @@ void sortByHometown(Student *ptr[]);
 
 int main()
 {
-	// Testing populate/display 
 	Student myClass[10];
 	populate(myClass);
-	display(myClass);
-
-	// Assigning array of pointers to student array
 	Student * ptr[10];
 	for (int i = 0; i < 10; i++) {
 		ptr[i] = &myClass[i];
 	}
 
+	int menuChoice;
+	do {
+		menu();
+		cin >> menuChoice;
+		switch (menuChoice) {
+		case 0: cout << "Original list" << endl << endl; display(ptr); break;
+		case 1: cout << "Sorted by Name" << endl << endl; sortByName(ptr); display(ptr); break;
+		case 2: cout << "Sorted by Student ID" << endl << endl; sortById(ptr); display(ptr); break;
+		case 3: cout << "Sorted by Grade" << endl << endl; sortByGrade(ptr); display(ptr); break;
+		case 4: cout << "Sorted by Birthday" << endl << endl; sortByBday(ptr); display(ptr); break;
+		case 5: cout << "Sorted by Home Town" << endl << endl; sortByHometown(ptr); display(ptr); break;
+		case 6: cout << "Exiting" << endl;  break;
+		}
+	} while (menuChoice != 6);
+
+	/*
 	// Testing sort by Name
 	cout << endl;
 	cout << "Unsorted Names" << endl;
@@ -93,6 +106,19 @@ int main()
 	cout << "Sorted hometowns" << endl;
 	cout << endl;
 	display(ptr);
+	*/
+}
+
+void menu() {
+	cout << endl;
+	cout << "0) Display original list" << endl;
+	cout << "1) Display list sorted by Name" << endl;
+	cout << "2) Display list sorted by Student ID " << endl;
+	cout << "3) Display list sorted by Grade" << endl;
+	cout << "4) Display list sorted by Birthday" << endl;
+	cout << "5) Display list sorted by Home Town" << endl;
+	cout << "6) Exit" << endl;
+	cout << endl;
 }
 
 void populate(Student arr[]) {
