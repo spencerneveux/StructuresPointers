@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <iomanip>
 #include "myDate.h"
 
 
@@ -68,8 +69,10 @@ void display(Student arr[]) {
 }
 
 void display(Student *ptr[]) {
+	cout << left << setw(20) << "Name" << setw(20) << "Student ID" << setw(20) << "Grade" << setw(20) << "Birthday" << setw(20) << "Home Town" << endl;
+	cout << left << setw(20) << "_____" << setw(20) << "__________" << setw(20) << "_____" << setw(20) << "________" << setw(20) << "__________" << endl;
 	for (int i = 0; i < 10; i++) {
-		cout << ptr[i]->id  << " " << ptr[i]->grade << " " << ptr[i]->bday.printDate() << endl;
+		cout << left << setw(20) << ptr[i]->name << setw(20) << ptr[i]->id << setw(20) << ptr[i]->grade << setw(20) << ptr[i]->bday.printDate() << setw(20) << ptr[i]->hometown << endl;
 	}
 }
 
@@ -78,7 +81,7 @@ void sortyById(Student * ptr[]) {
 	for (int i = 0; i < 10; i++) {
 		for (int j = i + 1; j < 10; j++) {
 			if (ptr[j]->id < ptr[i]->id) {
-				temp = ptr[j]; 
+				temp = ptr[j];
 				ptr[j] = ptr[i];
 				ptr[i] = temp;
 
@@ -140,34 +143,49 @@ int main()
 	}
 
 	// Testing sorting method for ID's
+	cout << endl;
 	cout << "Unsorted ID's" << endl;
+	cout << endl;
 	display(ptr);
 	sortyById(ptr);
+	cout << endl;
 	cout << "Sorted Ids" << endl;
+	cout << endl;
 	display(ptr);
 
 	// Testing sort by grade
-	cout << "Unsorted Grades" << endl;
+	cout << endl;
+	cout << "Unsorted Grades" << endl << endl;
+	cout << endl;
 	display(ptr);
 	sortByGrade(ptr);
+	cout << endl;
 	cout << "Sorted Grades" << endl;
+	cout << endl;
 	display(ptr);
 
 	// Testing sort by age
+	cout << endl;
 	cout << "Unsorted Bdays" << endl;
+	cout << endl;
 	display(ptr);
 	sortByBday(ptr);
+	cout << endl;
 	cout << "Sorted Bdays" << endl;
+	cout << endl;
 	display(ptr);
 
 	// Testing sort by hometown
+	cout << endl;
 	cout << "Unsorted hometowns" << endl;
+	cout << endl;
 	display(ptr);
 	sortByHometown(ptr);
+	cout << endl;
 	cout << "Sorted hometowns" << endl;
+	cout << endl;
 	display(ptr);
 }
-
 
 
 
