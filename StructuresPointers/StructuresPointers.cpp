@@ -113,6 +113,19 @@ void sortByBday(Student * ptr[]) {
 	}
 }
 
+void sortByHometown(Student * ptr[]) {
+	Student *temp;
+	for (int i = 0; i < 10; i++) {
+		for (int j = i + 1; j < 10; j++) {
+			if (ptr[j]->hometown < ptr[i]->hometown) {
+				temp = ptr[j];
+				ptr[j] = ptr[i];
+				ptr[i] = temp;
+			}
+		}
+	}
+}
+
 int main()
 {
 	// Testing populate/display 
@@ -146,8 +159,14 @@ int main()
 	sortByBday(ptr);
 	cout << "Sorted Bdays" << endl;
 	display(ptr);
-}
 
+	// Testing sort by hometown
+	cout << "Unsorted hometowns" << endl;
+	display(ptr);
+	sortByHometown(ptr);
+	cout << "Sorted hometowns" << endl;
+	display(ptr);
+}
 
 
 
