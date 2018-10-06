@@ -21,9 +21,9 @@ struct Student
 void populate(Student arr[]) {
 	srand(time(NULL));
 	//Generate names
-	string names[] = { "John Do", "Jane Do", "Abraham Lincoln", "Mother Teresa", "Nelson Mandela", "Bill Gates", "Steve Jobs", "Albert Einstein", "Thomas Edison", "George Orwell" };
+	string names[10] = { "John Do", "Jane Do", "Abraham Lincoln", "Mother Teresa", "Nelson Mandela", "Bill Gates", "Steve Jobs", "Albert Einstein", "Thomas Edison", "George Orwell" };
 	for (int n = 0; n < 10; n++) {
-		strcpy_s(arr[n].name, "John");
+		strcpy_s(arr[n].name, names[n].c_str());
 	}
 
 	//Generate random id numbers
@@ -73,6 +73,19 @@ void display(Student *ptr[]) {
 	cout << left << setw(20) << "_____" << setw(20) << "__________" << setw(20) << "_____" << setw(20) << "________" << setw(20) << "__________" << endl;
 	for (int i = 0; i < 10; i++) {
 		cout << left << setw(20) << ptr[i]->name << setw(20) << ptr[i]->id << setw(20) << ptr[i]->grade << setw(20) << ptr[i]->bday.printDate() << setw(20) << ptr[i]->hometown << endl;
+	}
+}
+
+void sortByName(Student * ptr[]) {
+	Student *temp;
+	for (int i = 0; i < 10; i++) {
+		for (int j = i + 1; j < 10; j++) {
+			if (strcmp(ptr[i]->name, ptr[j]->name) > 0) {
+				temp = ptr[j];
+				ptr[j] = ptr[i];
+				ptr[i] = temp;
+			}
+		}
 	}
 }
 
@@ -142,6 +155,17 @@ int main()
 		ptr[i] = &myClass[i];
 	}
 
+	// Testing sort by Name
+	cout << endl;
+	cout << "Unsorted Names" << endl;
+	cout << endl;
+	display(ptr);
+	sortByName(ptr);
+	cout << endl;
+	cout << "Sorted names " << endl;
+	cout << endl;
+	display(ptr);
+
 	// Testing sorting method for ID's
 	cout << endl;
 	cout << "Unsorted ID's" << endl;
@@ -186,6 +210,4 @@ int main()
 	cout << endl;
 	display(ptr);
 }
-
-
 
