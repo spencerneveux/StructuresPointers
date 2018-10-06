@@ -5,7 +5,6 @@
 #include <iomanip>
 #include "myDate.h"
 
-
 using namespace std;
 
 struct Student
@@ -17,6 +16,84 @@ struct Student
 	string hometown;
 };
 
+void populate(Student arr[]);
+void display(Student arr[]);
+void display(Student *ptr[]);
+void sortByName(Student *ptr[]);
+void sortById(Student *ptr[]);
+void sortByGrade(Student *ptr[]);
+void sortByBday(Student *ptr[]);
+void sortByHometown(Student *ptr[]);
+
+
+int main()
+{
+	// Testing populate/display 
+	Student myClass[10];
+	populate(myClass);
+	display(myClass);
+
+	// Assigning array of pointers to student array
+	Student * ptr[10];
+	for (int i = 0; i < 10; i++) {
+		ptr[i] = &myClass[i];
+	}
+
+	// Testing sort by Name
+	cout << endl;
+	cout << "Unsorted Names" << endl;
+	cout << endl;
+	display(ptr);
+	sortByName(ptr);
+	cout << endl;
+	cout << "Sorted names " << endl;
+	cout << endl;
+	display(ptr);
+
+	// Testing sorting method for ID's
+	cout << endl;
+	cout << "Unsorted ID's" << endl;
+	cout << endl;
+	display(ptr);
+	sortById(ptr);
+	cout << endl;
+	cout << "Sorted Ids" << endl;
+	cout << endl;
+	display(ptr);
+
+	// Testing sort by grade
+	cout << endl;
+	cout << "Unsorted Grades" << endl << endl;
+	cout << endl;
+	display(ptr);
+	sortByGrade(ptr);
+	cout << endl;
+	cout << "Sorted Grades" << endl;
+	cout << endl;
+	display(ptr);
+
+	// Testing sort by age
+	cout << endl;
+	cout << "Unsorted Bdays" << endl;
+	cout << endl;
+	display(ptr);
+	sortByBday(ptr);
+	cout << endl;
+	cout << "Sorted Bdays" << endl;
+	cout << endl;
+	display(ptr);
+
+	// Testing sort by hometown
+	cout << endl;
+	cout << "Unsorted hometowns" << endl;
+	cout << endl;
+	display(ptr);
+	sortByHometown(ptr);
+	cout << endl;
+	cout << "Sorted hometowns" << endl;
+	cout << endl;
+	display(ptr);
+}
 
 void populate(Student arr[]) {
 	srand(time(NULL));
@@ -89,7 +166,7 @@ void sortByName(Student * ptr[]) {
 	}
 }
 
-void sortyById(Student * ptr[]) {
+void sortById(Student * ptr[]) {
 	Student *temp;
 	for (int i = 0; i < 10; i++) {
 		for (int j = i + 1; j < 10; j++) {
@@ -141,73 +218,3 @@ void sortByHometown(Student * ptr[]) {
 		}
 	}
 }
-
-int main()
-{
-	// Testing populate/display 
-	Student myClass[10];
-	populate(myClass);
-	display(myClass);
-
-	// Assigning array of pointers to student array
-	Student * ptr[10];
-	for (int i = 0; i < 10; i++) {
-		ptr[i] = &myClass[i];
-	}
-
-	// Testing sort by Name
-	cout << endl;
-	cout << "Unsorted Names" << endl;
-	cout << endl;
-	display(ptr);
-	sortByName(ptr);
-	cout << endl;
-	cout << "Sorted names " << endl;
-	cout << endl;
-	display(ptr);
-
-	// Testing sorting method for ID's
-	cout << endl;
-	cout << "Unsorted ID's" << endl;
-	cout << endl;
-	display(ptr);
-	sortyById(ptr);
-	cout << endl;
-	cout << "Sorted Ids" << endl;
-	cout << endl;
-	display(ptr);
-
-	// Testing sort by grade
-	cout << endl;
-	cout << "Unsorted Grades" << endl << endl;
-	cout << endl;
-	display(ptr);
-	sortByGrade(ptr);
-	cout << endl;
-	cout << "Sorted Grades" << endl;
-	cout << endl;
-	display(ptr);
-
-	// Testing sort by age
-	cout << endl;
-	cout << "Unsorted Bdays" << endl;
-	cout << endl;
-	display(ptr);
-	sortByBday(ptr);
-	cout << endl;
-	cout << "Sorted Bdays" << endl;
-	cout << endl;
-	display(ptr);
-
-	// Testing sort by hometown
-	cout << endl;
-	cout << "Unsorted hometowns" << endl;
-	cout << endl;
-	display(ptr);
-	sortByHometown(ptr);
-	cout << endl;
-	cout << "Sorted hometowns" << endl;
-	cout << endl;
-	display(ptr);
-}
-
