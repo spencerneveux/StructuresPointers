@@ -132,9 +132,9 @@ void menu() {
 void populate(Student arr[]) {
 	srand(time(NULL));
 	//Generate names
-	string names[10] = { "John Do", "Jane Do", "Abraham Lincoln", "Mother Teresa", "Nelson Mandela", "Bill Gates", "Steve Jobs", "Albert Einstein", "Thomas Edison", "George Orwell" };
+	char names[10][30] = { "John Do", "Jane Do", "Abraham Lincoln", "Mother Teresa", "Nelson Mandela", "Bill Gates", "Steve Jobs", "Albert Einstein", "Thomas Edison", "George Orwell" };
 	for (int n = 0; n < 10; n++) {
-		strcpy_s(arr[n].name, names[n].c_str());
+		strcpy_s(arr[n].name, names[n]);
 	}
 
 	//Generate random id numbers
